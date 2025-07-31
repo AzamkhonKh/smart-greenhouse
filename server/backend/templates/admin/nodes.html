@@ -1,0 +1,76 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Nodes - Smart Greenhouse Admin{% endblock %}
+{% block header %}Node Management{% endblock %}
+
+{% block content %}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">IoT Nodes</h6>
+    </div>
+    <div class="card-body">
+        {% if nodes %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Node ID</th>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Firmware</th>
+                        <th>Last Seen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for node in nodes %}
+                    <tr>
+                        <td>{{ node.node_id }}</td>
+                        <td>{{ node.name }}</td>
+                        <td>{{ node.location or 'Not set' }}</td>
+                        <td>
+                            <span class="badge bg-info">{{ node.node_type or 'Unknown' }}</span>
+                        </td>
+                        <td>
+                            {% if node.status == 'online' %}
+                            <span class="badge bg-success">
+                                <i class="bi bi-circle-fill"></i> Online
+                            </span>
+                            {% elif node.status == 'offline' %}
+                            <span class="badge bg-danger">
+                                <i class="bi bi-circle-fill"></i> Offline
+                            </span>
+                            {% elif node.status == 'maintenance' %}
+                            <span class="badge bg-warning">
+                                <i class="bi bi-circle-fill"></i> Maintenance
+                            </span>
+                            {% else %}
+                            <span class="badge bg-secondary">
+                                <i class="bi bi-circle-fill"></i> {{ node.status or 'Unknown' }}
+                            </span>
+                            {% endif %}
+                        </td>
+                        <td>{{ node.firmware_version or 'N/A' }}</td>
+                        <td>
+                            {% if node.last_seen %}
+                            {{ node.last_seen.strftime('%Y-%m-%d %H:%M:%S') }}
+                            {% else %}
+                            <span class="text-muted">Never</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="text-center py-4">
+            <i class="bi bi-cpu text-muted" style="font-size: 3rem;"></i>
+            <p class="text-muted mt-3">No nodes registered yet</p>
+            <p class="text-muted">IoT nodes will appear here once they connect to the system</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

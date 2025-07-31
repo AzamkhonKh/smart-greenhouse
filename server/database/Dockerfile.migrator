@@ -1,0 +1,32 @@
+FROM postgres:15-alpine
+
+# Install required packages
+RUN apk add --no-cache \
+    python3 \
+    py3-pip \
+    curl \
+    bash
+
+# Create virtual environment to avoid externally-managed-environment error
+RUN python3 -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
+# Install Python packages for database utilities in virtual environment
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir \
+    psycopg2-binary==2.9.9 \
+    sqlalchemy==2.0.23 \
+    python-dotenv==1.0.0
+
+# Copy database scripts
+COPY sql/ /opt/sql/
+COPY scripts/ /opt/scripts/
+
+# Make scripts executable
+RUN chmod +x /opt/scripts/*.sh
+
+# Set working directory
+WORKDIR /opt
+
+# Default command runs migration and seeding
+CMD ["/opt/scripts/migrate_and_seed.sh"]

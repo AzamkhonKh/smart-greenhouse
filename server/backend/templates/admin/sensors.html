@@ -1,0 +1,56 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Sensors - Smart Greenhouse Admin{% endblock %}
+{% block header %}Sensor Management{% endblock %}
+
+{% block content %}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Sensors</h6>
+    </div>
+    <div class="card-body">
+        {% if sensors %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Sensor ID</th>
+                        <th>Type</th>
+                        <th>Unit</th>
+                        <th>Status</th>
+                        <th>Node</th>
+                        <th>Zone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sensor in sensors %}
+                    <tr>
+                        <td>{{ sensor.sensor_id }}</td>
+                        <td>
+                            <span class="badge bg-primary">{{ sensor.sensor_type }}</span>
+                        </td>
+                        <td>{{ sensor.unit }}</td>
+                        <td>
+                            {% if sensor.is_active %}
+                            <span class="badge bg-success">Active</span>
+                            {% else %}
+                            <span class="badge bg-secondary">Inactive</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ sensor.node_name or 'Not assigned' }}</td>
+                        <td>{{ sensor.zone_name or 'Not assigned' }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="text-center py-4">
+            <i class="bi bi-thermometer text-muted" style="font-size: 3rem;"></i>
+            <p class="text-muted mt-3">No sensors configured yet</p>
+            <p class="text-muted">Sensors will appear here once they are added to the system</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

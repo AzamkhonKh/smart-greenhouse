@@ -1,0 +1,66 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Zones - Smart Greenhouse Admin{% endblock %}
+{% block header %}Zone Management{% endblock %}
+
+{% block content %}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Growing Zones</h6>
+    </div>
+    <div class="card-body">
+        {% if zones %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Zone ID</th>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th>Plant Type</th>
+                        <th>Planting Date</th>
+                        <th>Status</th>
+                        <th>Temperature Target</th>
+                        <th>Humidity Target</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for zone in zones %}
+                    <tr>
+                        <td>{{ zone.zone_id }}</td>
+                        <td>{{ zone.name }}</td>
+                        <td>Row {{ zone.row_number }}, Col {{ zone.column_number }}</td>
+                        <td>
+                            {% if zone.plant_type %}
+                            <span class="badge bg-success">{{ zone.plant_type }}</span>
+                            {% else %}
+                            <span class="text-muted">Not set</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ zone.planting_date.strftime('%Y-%m-%d') if zone.planting_date else 'Not set' }}</td>
+                        <td>
+                            {% if zone.status == 'active' %}
+                            <span class="badge bg-success">Active</span>
+                            {% elif zone.status == 'maintenance' %}
+                            <span class="badge bg-warning">Maintenance</span>
+                            {% else %}
+                            <span class="badge bg-secondary">{{ zone.status or 'Unknown' }}</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ zone.target_temperature }}°C</td>
+                        <td>{{ zone.target_humidity }}%</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="text-center py-4">
+            <i class="bi bi-grid text-muted" style="font-size: 3rem;"></i>
+            <p class="text-muted mt-3">No zones configured yet</p>
+            <p class="text-muted">Zones will appear here once they are added to the system</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

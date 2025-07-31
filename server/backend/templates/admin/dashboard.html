@@ -1,0 +1,115 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Dashboard - Smart Greenhouse Admin{% endblock %}
+{% block header %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Zones</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ stats.zones or 0 }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="bi bi-grid fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Nodes</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ stats.nodes or 0 }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="bi bi-cpu fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Sensors</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ stats.sensors or 0 }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="bi bi-thermometer fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Actuators</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ stats.actuators or 0 }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="bi bi-gear fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Recent Sensor Readings</h6>
+            </div>
+            <div class="card-body">
+                {% if recent_readings %}
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Sensor Type</th>
+                                <th>Value</th>
+                                <th>Unit</th>
+                                <th>Timestamp</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for reading in recent_readings %}
+                            <tr>
+                                <td>
+                                    <span class="badge bg-secondary">{{ reading.sensor_type }}</span>
+                                </td>
+                                <td>{{ reading.value }}</td>
+                                <td>{{ reading.unit }}</td>
+                                <td>{{ reading.time.strftime('%Y-%m-%d %H:%M:%S') if reading.time else 'N/A' }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="text-center py-4">
+                    <i class="bi bi-info-circle text-muted" style="font-size: 2rem;"></i>
+                    <p class="text-muted mt-2">No recent sensor readings available</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

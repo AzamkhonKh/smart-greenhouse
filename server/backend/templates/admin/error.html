@@ -1,0 +1,21 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Error - Smart Greenhouse Admin{% endblock %}
+{% block header %}Error{% endblock %}
+
+{% block content %}
+<div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        An error occurred
+    </h4>
+    <p>{{ error }}</p>
+    <hr>
+    <p class="mb-0">
+        <a href="/admin/" class="btn btn-outline-danger">
+            <i class="bi bi-house"></i>
+            Back to Dashboard
+        </a>
+    </p>
+</div>
+{% endblock %}

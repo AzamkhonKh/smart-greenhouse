@@ -1,0 +1,65 @@
+# FastAPI and Web Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+gunicorn==21.2.0
+# Temporarily disable fastapi-admin due to aioredis compatibility issues
+# fastapi-admin==1.0.4
+tortoise-orm[asyncpg]==0.20.0
+# aioredis==2.0.1
+jinja2==3.1.2
+python-multipart==0.0.6
+
+# Database
+sqlalchemy==2.0.23
+asyncpg==0.29.0
+psycopg2-binary==2.9.9
+alembic==1.12.1
+
+# Authentication & Security
+pyjwt==2.8.0
+bcrypt==4.1.2
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.6
+
+# Redis
+redis==5.0.1
+
+# Data Validation & Serialization
+pydantic==2.5.0
+pydantic-settings==2.1.0
+
+# HTTP Client
+httpx==0.25.2
+requests==2.31.0
+
+# Date/Time
+python-dateutil==2.8.2
+
+# Configuration
+python-dotenv==1.0.0
+
+# Logging & Monitoring
+structlog==23.2.0
+
+# CoAP Support
+aiocoap==0.4.7
+
+# Development & Testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+black==23.11.0
+flake8==6.1.0
+mypy==1.7.1
+
+# Documentation
+sphinx==7.2.6
+sphinx-rtd-theme==1.3.0
+
+# Utilities
+typing-extensions==4.8.0
+python-json-logger==2.0.7
+
+# Optional: For enhanced development
+ipython==8.17.2
+rich==13.7.0
