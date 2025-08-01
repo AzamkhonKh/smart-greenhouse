@@ -1,0 +1,3 @@
+[submodule "plantSensorDemo"]
+	path = plantSensorDemo
+	url = https://github.com/AzamkhonKh/plantSensor
