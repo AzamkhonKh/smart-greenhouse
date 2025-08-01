@@ -1,0 +1,23 @@
+idf_component_register(
+    SRCS 
+        "src/main.c" 
+        "src/network/wifi_manager.c" 
+        "src/network/coap_client.c" 
+        "src/network/http_client.c"
+        "src/sensors/sensor_manager.c" 
+        "src/simulation/greenhouse_simulator.c"
+    INCLUDE_DIRS 
+        "include"
+        "include/common"
+        "include/network"
+        "include/sensors"
+        "include/simulation"
+    REQUIRES 
+        esp_wifi 
+        esp_event 
+        esp_adc 
+        nvs_flash 
+        driver 
+        esp_netif
+        esp_http_client
+)

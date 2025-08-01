@@ -1,0 +1,32 @@
+#ifndef CONFIG_LOCAL_H
+#define CONFIG_LOCAL_H
+
+// WiFi Configuration
+// Replace with your actual WiFi credentials
+#define WIFI_SSID_LOCAL "Your_WiFi_Network"
+#define WIFI_PASSWORD_LOCAL "your_wifi_password"
+
+// Server Configuration
+// Replace with your actual server details
+#define SERVER_URL_LOCAL "coap://192.168.1.100:5683"
+#define API_KEY_LOCAL "your_api_key_here"
+
+// Node Identity
+// Customize for your specific node
+#define NODE_ID_LOCAL "esp32c6_plant_node_01"
+#define ZONE_ID_LOCAL "greenhouse_zone_a"
+#define PLANT_TYPE_LOCAL "tomato"
+
+// Sensor Configuration (optional overrides)
+// Uncomment and modify if you want different sensor pins
+// #define SOIL_MOISTURE_PIN_LOCAL 2
+// #define TEMP_HUMIDITY_PIN_LOCAL 4
+// #define LIGHT_SENSOR_PIN_LOCAL 5
+// #define EC_SENSOR_PIN_LOCAL 6
+
+// Timing Configuration (optional overrides)
+// Uncomment and modify if you want different timing intervals
+// #define SENSOR_READ_INTERVAL_LOCAL 30000  // 30 seconds
+// #define COAP_SEND_INTERVAL_LOCAL 60000    // 60 seconds
+
+#endif // CONFIG_LOCAL_H
