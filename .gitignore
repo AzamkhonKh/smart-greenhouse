@@ -1,3 +1,5 @@
 .DS_Store
 
 draft
+greenhouse_report*
+!greenhouse_report.tex
