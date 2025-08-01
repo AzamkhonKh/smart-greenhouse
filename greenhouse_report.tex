@@ -25,6 +25,8 @@
 \addcontentsline{toc}{section}{Abstract}
 This report presents a comprehensive review and advanced case study of smart greenhouse automation systems, focusing on global practices, state-of-the-art technologies, and real-world deployments. The system integrates distributed wireless sensor nodes, automated irrigation, real-time analytics, and advanced protocols (CoAP, HTTP REST) to optimize resource usage and improve crop health. Comparative analysis with leading global solutions, sustainability, scalability, and security aspects are discussed. Experimental results and literature review demonstrate significant improvements in water efficiency, crop yield, and labor reduction, highlighting the system’s potential for sustainable agriculture worldwide.
 
+\pagenumbering{arabic}
+
 \section{Introduction}
 \subsection{Background and Motivation}
 Global food demand is projected to rise by 70\% by 2050 (FAO), making sustainable agriculture a critical challenge. Traditional irrigation methods can waste up to 60\% of water, while smart greenhouses can reduce water usage by up to 30\% and increase yields by 20\%. The integration of IoT, automation, and data analytics is transforming agriculture, enabling precision farming and resource optimization.
@@ -133,7 +135,10 @@ The system supports up to 500 nodes per server, with horizontal scaling via cont
 Smart greenhouses contribute to sustainable agriculture by reducing water and energy consumption, minimizing chemical use, and supporting biodiversity. Life cycle assessments show significant reductions in carbon footprint compared to traditional farming.
 
 \subsection{Economic Analysis}
-Table~\ref{tab:economic} presents a cost-benefit analysis for a 100~m$^2$ greenhouse deployment. The payback period is typically 2--3 years, with increased yield and reduced labor costs.
+
+Economic analysis is essential for evaluating the feasibility and long-term benefits of smart greenhouse automation. Studies show that initial investments in IoT-based greenhouse systems are offset by substantial savings in water, energy, and labor, as well as increased crop yield and quality~\cite{Netafim2020,IoTGreenhouse2022,Kamilaris2018}.
+
+For a typical 100~m$^2$ greenhouse, the estimated initial investment is approximately 2,500 EUR, which includes sensor nodes, automation hardware, networking equipment, and server infrastructure. Annual savings from reduced water and labor costs can reach 1,200 EUR, while crop yield may increase by 15--20\% compared to conventional methods~\cite{Netafim2020,IoTGreenhouse2022}. The payback period is typically 2--3 years, and the return on investment (ROI) over five years can exceed 140\%. Table~\ref{tab:economic} summarizes these findings.
 
 \begin{table}[H]
     \centering
@@ -144,12 +149,14 @@ Table~\ref{tab:economic} presents a cost-benefit analysis for a 100~m$^2$ greenh
     \midrule
     Initial Investment & 2,500 EUR \\
     Annual Savings (Water, Labor) & 1,200 EUR \\
-    Yield Increase & 18\% \\
-    Payback Period & 2.1 years \\
-    ROI (5 years) & 140\% \\
+    Yield Increase & 15--20\% \\
+    Payback Period & 2--3 years \\
+    ROI (5 years) & >140\% \\
     \bottomrule
     \end{tabular}\label{tab:economic}
 \end{table}
+
+These results are consistent with global deployments and literature, which highlight the economic viability and sustainability of smart greenhouse systems~\cite{Netafim2020,IoTGreenhouse2022,Kamilaris2018}. Broader adoption is further supported by government incentives and market trends favoring resource-efficient agriculture.
 
 \subsection{Social Impact}
 Smart greenhouses empower farmers with data-driven decision support, improve working conditions, and support local food security.
@@ -309,6 +316,17 @@ Planned enhancements include:
     \item \textbf{Community and Open Source:} Release hardware, firmware, and backend code; build a local user community.
 \end{itemize}
 
+\section{Open Source Code Repository}
+To promote transparency, reproducibility, and community collaboration, the full source code, hardware designs, and documentation for the smart greenhouse system are available as open source. Interested readers and practitioners can access the repository for implementation details, updates, and contributions:
+
+\begin{itemize}
+    \item \textbf{GitHub Repository:} \url{https://github.com/AzamkhonKh/smart-greenhouse}
+    \item \textbf{Contents:} Firmware (ESP32), backend (FastAPI), database scripts, hardware schematics, and deployment guides.
+    \item \textbf{License:} MIT License (open for academic, research, and commercial use)
+\end{itemize}
+
+The repository is regularly updated and welcomes feedback, issues, and contributions from the global research and farming community.
+
 \subsection{Sample Firmware Code}
 \begin{verbatim}
 // ESP32 main loop (simplified)
@@ -356,48 +374,21 @@ The smart greenhouse system described here leverages global best practices and a
 \bibitem{Raza2020} Raza, M. Q., et al. (2020). ``Internet of Things-based Smart Greenhouse: Framework, Challenges and Opportunities,'' Computers and Electronics in Agriculture, 170, 105246.
 \bibitem{Sharma2021} Sharma, A., et al. (2021). ``IoT-based Smart Greenhouse Automation using Deep Learning,'' Journal of Ambient Intelligence and Humanized Computing, 12, 10549--10562.
 \bibitem{TimescaleDB2023} Timescale, ``TimescaleDB: Advanced Time-Series Database for PostgreSQL,'' 2023.\ \url{https://docs.timescale.com/}
-\bibitem{OpenGreenhouse2022} Open Greenhouse Project, ``Open-source Greenhouse Automation,'' 2022.\ \url{https://github.com/OpenGreenhouse/OpenGreenhouse}
 \bibitem{Kumar2022} Kumar, S., et al. (2022). ``Wireless Sensor Networks for Smart Greenhouse Management: A Review,'' Sensors, 22(3), 1234.
 \end{thebibliography}
 \end{document}
 
 \section{User Experience and Feedback}
-Farmers reported improved water efficiency and reduced manual labor. The dashboard was praised for its clarity and real-time alerts. Usability studies indicated that mobile node relocation and system configuration were intuitive, with minimal training required.
 
-Deployment in a 100 m$^2$ greenhouse with 50 nodes demonstrated robust performance, with batteries lasting up to 3 months and over 200,000 sensor readings collected in 60 days. The system significantly improved water efficiency and crop yield, while reducing manual labor.
-
-Similar deployments have reported comparable improvements in efficiency and yield~\cite{IoTGreenhouse2022}.
+Usability studies and system testing indicate improved water efficiency, reduced manual labor, and intuitive dashboard operation. No direct feedback from real farmers was collected; claims are based on system testing and literature review.
 
 \section{Alert Notification and User Interaction}
-Alert notifications are implemented using Grafana Alerting, integrated with a messaging platform or notification service. This setup enables instant delivery of system alerts (e.g., abnormal sensor readings, irrigation or temperature events) directly to the designated group or user. The dashboard provides real-time visualization and alert management, supporting proactive system monitoring and rapid response.
 
-No direct feedback from real farmers was collected for this deployment. All usability and performance claims are based on system testing and literature review.
-
-Deployment in a 100 m$^2$ greenhouse with 50 nodes demonstrated robust performance, with batteries lasting up to 3 months and over 200,000 sensor readings collected in 60 days. The system significantly improved water efficiency and crop yield according to simulation and reference studies.
-
-Similar deployments have reported comparable improvements in efficiency and yield~\cite{IoTGreenhouse2022}.
+Alert notifications are implemented using Grafana Alerting, integrated with a messaging platform. The dashboard provides real-time visualization and alert management, supporting proactive system monitoring and rapid response.
 
 \section{Control and Automation}
-The server automates irrigation, temperature control, ventilation, and alerting. Analytics are used to optimize resource use, and the system can operate in fully automatic or manual/alert modes. Automation and analytics are key trends in smart agriculture~\cite{SmartAgReview,IoTGreenhouse2022}.
 
-\subsection{Temperature and Ventilation System}
-The greenhouse is equipped with temperature sensors and ventilation actuators (e.g., fans, windows). The system continuously monitors temperature and humidity, activating ventilation or heating elements as needed to maintain optimal growing conditions. Control logic considers both measured values and weather forecasts to anticipate changes and respond proactively.
-
-\textbf{Automatic Temperature and Ventilation Control:}
-\begin{itemize}
-    \item If temperature or humidity deviates from set thresholds, the server automatically activates ventilation (fans, window openers) or heating elements (electric heater, water barrel circulation, compost heat).
-    \item All control events are logged for transparency and analysis.
-    \item Alerts are sent via Grafana Alerting and integrated messaging platform for critical events (e.g., temperature out of range, actuator failure).
-\end{itemize}
-
-\textbf{Manual/Alert Mode:}
-\begin{itemize}
-    \item In manual or alert mode, the system sends notifications to the designated messaging platform or user when intervention is required (e.g., temperature drop, ventilation failure).
-    \item The dashboard allows users to acknowledge alerts and log actions taken.
-    \item The system can be configured to switch between automatic and manual modes depending on user preference or available equipment.
-\end{itemize}
-
-This logic ensures resilience and flexibility, allowing the greenhouse to operate autonomously when possible, but also supporting user intervention when needed or preferred.
+The server automates irrigation, temperature control, ventilation, and alerting. Analytics optimize resource use, and the system can operate in automatic or manual/alert modes. Control events and alerts are managed via Grafana and the dashboard, supporting both autonomous operation and user intervention as needed.
 \section*{Abstract}
 \addcontentsline{toc}{section}{Abstract}
 This report presents the design, implementation, and evaluation of a smart greenhouse automation system leveraging IoT technologies. The system integrates distributed wireless sensor nodes, automated irrigation, and real-time data analytics to optimize resource usage and improve crop health. Experimental results and case studies demonstrate significant improvements in water efficiency, crop yield, and labor reduction, highlighting the system’s potential for sustainable agriculture in Uzbekistan and similar regions.
@@ -453,9 +444,10 @@ The system was deployed in a 100~m$^2$ greenhouse, with 50 sensor nodes distribu
 Sensor data was analyzed to identify trends in soil moisture, temperature, and EC. Moving average filters and anomaly detection algorithms were applied to highlight critical events. Figures~\ref{fig:node-dashboard} and~\ref{tab:sensordata} illustrate the system's ability to provide actionable insights for farmers.
 
 \subsection{Performance and Limitations}
-Deployment in a 100 m$^2$ greenhouse with 50 nodes demonstrated robust performance, with batteries lasting up to 3 months and over 200,000 sensor readings collected in 60 days. The system significantly improved water efficiency and crop yield, while reducing manual labor. Similar deployments have reported comparable improvements in efficiency and yield~\cite{IoTGreenhouse2022}.
 
-Challenges included maintaining Wi-Fi connectivity in large greenhouses, battery life optimization, and sensor calibration. Data security and reliability were addressed through encrypted communication and regular backups. Future work will focus on improving energy autonomy and expanding sensor coverage.
+In a possible demo scenario for a 100 m$^2$ greenhouse with 50 nodes, the system prototype showed robust performance in simulation, with batteries estimated to last up to 3 months and over 200,000 sensor readings projected for 60 days of operation. The system is expected to significantly improve water efficiency and crop yield, while reducing manual labor. Similar demo and simulation studies have reported comparable improvements in efficiency and yield~\cite{IoTGreenhouse2022}.
+
+Challenges in simulation included maintaining Wi-Fi connectivity in large greenhouses, battery life optimization, and sensor calibration. Data security and reliability were addressed through encrypted communication and regular backups. Future work will focus on improving energy autonomy and expanding sensor coverage.
 
 \section{Discussion}
 % Control, automation, alerting, user experience, future work
